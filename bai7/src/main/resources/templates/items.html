@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Item List</title>
+  <style>
+    table, th, td {
+      border: 1px solid #888;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Danh sách sản phẩm</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Tên</th>
+    <th>Chất lượng</th>
+    <th>Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${items}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.quality}"></td>
+    <td>
+      <form th:action="@{/items/update}" method="post" style="display:inline;">
+        <input type="hidden" name="id" th:value="${item.id}" />
+        <input type="text" name="name" th:placeholder="${item.name}" required />
+        <input type="text" name="quality" th:placeholder="${item.quality}" required />
+        <button type="submit">Cập nhật</button>
+      </form>
+
+      <a th:href="@{'/items/delete/' + ${item.id}}" onclick="return confirm('Xóa sản phẩm này?')">Xóa</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h3>Thêm sản phẩm mới</h3>
+
+<form th:action="@{/items/add}" method="post">
+  <label>Tên:</label>
+  <input type="text" name="name" required />
+  <label>Chất lượng:</label>
+  <input type="text" name="quality" required />
+  <button type="submit">Thêm</button>
+</form>
+
+</body>
+</html>

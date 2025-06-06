@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog Titles</title>
+</head>
+<body>
+<h1>Danh sách Blog</h1>
+<ul>
+    <li th:each="blog : ${blogs}">
+        <a th:href="@{'/blog?id=' + ${blog.id}}">
+            <span th:text="${blog.title}">Tiêu đề</span> -
+            <em th:text="${blog.author.name}">Tên tác giả</em>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

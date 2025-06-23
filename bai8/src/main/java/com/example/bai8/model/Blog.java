@@ -1,4 +1,4 @@
-package com.example.bai8;
+package com.example.bai8.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,4 +21,7 @@ public class Blog {
     @ManyToOne
     @JoinColumn(name="author_id")
     private Author author;
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 }

@@ -1,0 +1,45 @@
+<form method="get" th:action="@{/blogs/category}">
+
+<label>Tìm tiêu đề:</label>
+    <input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm..." />
+
+    <label>Danh mục:</label>
+    <select name="categoryId">
+        <option value="">-- Tất cả --</option>
+        <option th:each="cat : ${categories}"
+                th:value="${cat.id}"
+                th:text="${cat.name}"
+                th:selected="${cat.id == selectedCategoryId}">
+        </option>
+    </select>
+
+    <button type="submit">Tìm</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <tr>
+        <th>Tiêu đề</th>
+        <th>Nội dung</th>
+        <th>Danh mục</th>
+    </tr>
+    <tr th:each="blog : ${blogs}">
+        <td th:text="${blog.title}">Tiêu đề</td>
+        <td th:text="${blog.content}">Nội dung</td>
+        <td th:text="${blog.category.name}">Danh mục</td>
+    </tr>
+</table>
+
+<hr>
+
+<!-- Phân trang -->
+<div>
+    <span th:if="${totalPages > 1}">
+        <a th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+           th:href="@{/blogs(keyword=${keyword}, categoryId=${selectedCategoryId}, page=${i})}"
+           th:text="${i + 1}"
+           th:style="${i == currentPage} ? 'font-weight: bold;' : ''">
+        </a>
+    </span>
+</div>

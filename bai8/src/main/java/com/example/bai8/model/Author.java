@@ -1,4 +1,4 @@
-package com.example.bai8;
+package com.example.bai8.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chọn danh mục</title>
+</head>
+<body>
+<h1>Chọn danh mục Blog</h1>
+<ul>
+    <li th:each="cat : ${categories}">
+        <a th:href="@{'/blogs/category?categoryId=' + ${cat.id}}" th:text="${cat.name}">Tên danh mục</a>
+
+    </li>
+    <p><a href="/add">Thêm mới blog</a></p>
+    <p><a href="/category">Xem danh sách danh mục</a></p>
+</ul>
+</body>
+</html>

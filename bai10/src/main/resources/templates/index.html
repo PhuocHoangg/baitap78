@@ -1,0 +1,15 @@
+<form th:action="@{/register}" th:object="${user}" method="post">
+    <input type="text" th:field="*{firstName}" />
+    <label><span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>Tên đầu</label>
+
+    <input type="text" th:field="*{lastName}" />
+    <label><span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>Tên Cuối</label>
+
+    <input type="number" th:field="*{age}" />
+    <label><span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Tuổi</span>Tuổi</label>
+
+    <input type="text" th:field="*{email}" />
+    <label><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email</span>Email</label>
+
+    <button type="submit">Đăng ký</button>
+</form>

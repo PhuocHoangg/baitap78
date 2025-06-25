@@ -1,0 +1,13 @@
+<form th:action="@{/update}" method="post" th:object="${songDTO}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Tiêu đề:</label>
+    <input type="text" th:field="*{title}" /><br>
+
+    <label>Thể loại:</label>
+    <input type="text" th:field="*{type}" /><br>
+
+    <label>Nghệ sĩ:</label>
+    <input type="text" th:field="*{artist}" /><br>
+
+    <button type="submit">Cập nhật</button>
+</form>

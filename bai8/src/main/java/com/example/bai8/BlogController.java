@@ -67,7 +67,7 @@ public class BlogController {
          return "add";
      }
     @PostMapping("/add")
-    public String save(@ModelAttribute Blog blog,
+    public String save(@ModelAttri  bute Blog blog,
                        @RequestParam String authorName) {
         Author author = authorRepository.findByName(authorName);
         if (author == null) {
